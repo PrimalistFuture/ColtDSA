@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyzing Performance of Arrays and Objects</title>
+</head>
+
+<body>
+    <h1>Analyzing Performance of Arrays and Objects</h1>
+
+    <h2>Objects</h2>
+
+    <ul>Time of Object actions
+        <li>Insertion - O(1)</li>
+        <li>Removal - O(1)</li>
+        <li>Searching - O(n)</li>
+        <li>Access - O(1)</li>
+    </ul>
+
+    <ul>Time of Object Methods
+        <li>Object.keys - O(n)</li>
+        <li>Object.values - O(n)</li>
+        <li>Object.entries - O(n)</li>
+        <li>hasOwnProperty - O(1)</li>
+    </ul>
+
+    <p>When you don't need order, objects are a great type. Items are added using a key. There is no beginning, middle,
+        or end.</p>
+
+    <h2>Arrays</h2>
+
+    <ul>Time of Array actions
+        <li>Insertion - depends...</li>
+        <li>Removal - depends...</li>
+        <li>Searching - O(N)</li>
+        <li>Access - O(1)</li>
+    </ul>
+
+    <p>When <b>inserting</b> items to the end of an array (.push), that is constant. But when adding to the beginning
+        (.unshift)</p>
+
+    <p>Same with removing. .pop from the end of the array is faster than .shift from the start of the array.</p>
+
+    <ul>Time of Array Methods
+        <li>push - O(1)</li>
+        <li>pop - O(1)</li>
+        <li>shift - O(n)</li>
+        <li>unshift - O(n)</li>
+        <li>concat - O(n)</li>
+        <li>slice - O(n)</li>
+        <li>splice - O(n)</li>
+        <li>sort - O(n * log n)</li>
+        <li>map/filter/reduce - O(n)</li>
+    </ul>
+
+    <p>When you need order. But this order can come at a time cost when inserting and removing items.</p>
+
+</body>
+
+</html>
