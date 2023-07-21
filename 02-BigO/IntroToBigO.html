@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Big O</title>
 </head>
+
 <body>
   <h1>Intro to Big O</h1>
 
@@ -21,7 +23,9 @@
 
   <h2>Big O Notation</h2>
 
-  <p>Big O is a way of evaluating different solution and comparing code performance. Is a way to formalize fuzzy counting that allows us to talk formally about how the runtime of an algorithm grows as the inputs grow. We care about the trends. Big O is the worst case scenario - the upperbound.</p>
+  <p>Big O is a way of evaluating different solution and comparing code performance. Is a way to formalize fuzzy
+    counting that allows us to talk formally about how the runtime of an algorithm grows as the inputs grow. We care
+    about the trends. Big O is the worst case scenario - the upperbound.</p>
 
   <p>This matters a ton when your scale becomes gigantic. Also coding interviews love this stupid shit.</p>
 
@@ -29,8 +33,30 @@
 
   <p>Check the demo</p>
 
+  <h3>Big O Shortcuts</h3>
 
+  <p>Smaller terms (n2 + n + 10) would simplify to O(n2).</p>
 
+  <p>Coeffiecents don't matter. O(5n) = O(n).</p>
+
+  <ul>
+    <li>Arithmetic operations are constant</li>
+    <li>Variable assignment is constant</li>
+    <li>Accessing elements in an array or an object is constant</li>
+    <li>In a loop, the complexity is the length of the loop. </li>
+  </ul>
+
+  <p>CTD.</p>
+
+  <h3>Space Complexity</h3>
+
+  <p>Can still use Big O notation to analyze space complexity - the amount of memory we are taking up.</p>
+
+  <ul>
+    <li>Most primatives (booleans, numbers, undefined, null) are constant space.</li>
+    <li>Strings require O(n) space.</li>
+    <li>Reference types (arrays, objects) are generally O(n) space.</li>
+  </ul>
 
 
 
@@ -43,4 +69,5 @@
 
 
 </body>
+
 </html>
