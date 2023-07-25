@@ -79,7 +79,7 @@ function sumZero(sortedArr) {
     let right = sortedArr.length - 1
     while (left < right) {
         if (sortedArr[left] + sortedArr[right] === 0) {
-            return [sortedArr[left],sortedArr[right]];
+            return [sortedArr[left], sortedArr[right]];
         } else if (sortedArr[left] + sortedArr[right] > 0) {
             right--;
         } else if (sortedArr[left] + sortedArr[right] < 0) {
@@ -133,4 +133,62 @@ function countUniqueValues(sortedArr) {
         }
     }
     return ++i;
+}
+
+// Sliding Window Pattern
+
+// Write a func called maxSubarraySum which accepts an array of integers and a number called n. The func should calculate the maximum sum of n consecutive elements in the array.
+
+// [1,2,3,4], 2 = 7
+// [1,1,1,2,2,3,6,1,1,3], 4 = 13
+// [], 2 = null
+
+function maxSubarraySum(arr, n) {
+    if (n > arr.length) {
+        return null;
+    }
+    let maxSum = 0;
+    let tempSum = 0;
+    for (let i = 0; i < n; i++) {
+        maxSum += arr[i];
+    }
+    tempSum = maxSum;
+    for (let i = n; i < arr.length; i++) {
+        console.log(arr[i - n])
+        tempSum = tempSum - arr[i - n] + arr[i];
+        maxSum = Math.max(maxSum, tempSum);
+    }
+    return maxSum;
+}
+
+// still a little fuzzy on line 158. I know what it does: it takes the tempSum and subtracts the first item that it was composed of and adds on the next item. Line 159 then compares the tempSum with maxSum.
+// But its just a bit unfamiliar
+
+
+// Divide and Conquer
+
+// Given a sorted array of integers, write a func called search that accepts a value and returns the index where the value passed to the func is located. If the value is not found, return -1.
+
+// [1,2,3,4,5,6], 4 // 3
+// [1,2,3,4,5,6], 6 // 5
+// [1,2,3,4,5,6], 11 // -1
+
+function search(arr, val) {
+    let min = 0;
+    let max = arr.length - 1;
+
+    while (min <= max) {
+        let middle = Math.floor((min + max) / 2);
+
+        if (arr[middle] < val) {
+            min = middle + 1;
+        }
+        else if (arr[middle] > val) {
+            max = middle - 1;
+        }
+        else {
+            return middle;
+        }
+    }
+    return -1;
 }
