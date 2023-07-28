@@ -247,3 +247,5 @@ function minSubArrayLen(nums, sum) {
     }
     return minLen === Infinity ? 0 : minLen;
 }
+
+// Well now we know. I got smoked. This isn't far from what i had, but mentally it was going to take a ton to get me through the next few steps. The comments here help a lot. Review this tomorrow.
