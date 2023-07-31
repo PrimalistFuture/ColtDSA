@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recursion</title>
 </head>
+
 <body>
   <h1>Recursion</h1>
 
@@ -19,22 +21,47 @@
 
   <h2>What is recursion?</h2>
 
-  <p>Any function that calls itself. Usually done on a smaller and smaller amount of data. Some codebases use it a lot, some not at all. Used under the hood everywhere - JSON.parse / JSON.stringify are <i>usually</i> recursive.</p>
+  <p>Any function that calls itself. Usually done on a smaller and smaller amount of data. Some codebases use it a lot,
+    some not at all. Used under the hood everywhere - JSON.parse / JSON.stringify are <i>usually</i> recursive.</p>
 
   <h2>Why use recursion?</h2>
 
-  <p>Anything that can be solved recursively, can be solved iteratively, usually with a while loop. But some problems lend themselves more to one technique or the other.</p>
+  <p>Anything that can be solved recursively, can be solved iteratively, usually with a while loop. But some problems
+    lend themselves more to one technique or the other.</p>
 
   <h2>The call stack</h2>
 
-  <p>In almost all programming languages, there is a built in data structure that manages what happens when functions are invoked. The <b>call stack</b> is a stack, and when a function is invoked, it is placed on the top of the stack. When JS sees the return keyword or when a function ends, the compiler will remove the item from the top of the stack.</p>
+  <p>In almost all programming languages, there is a built in data structure that manages what happens when functions
+    are invoked. The <b>call stack</b> is a stack, and when a function is invoked, it is placed on the top of the stack.
+    When JS sees the return keyword or when a function ends, the compiler will remove the item from the top of the
+    stack.</p>
 
-  <p>Recursion takes advantage of this call stack by repeatedly calling the same function over and over with a smaller amount of data. The last item placed onto the stack will be the first to resolve, and then it will pop off, and go to the next one.</p>
+  <p>Recursion takes advantage of this call stack by repeatedly calling the same function over and over with a smaller
+    amount of data. The last item placed onto the stack will be the first to resolve, and then it will pop off, and go
+    to the next one.</p>
 
   <h2>Recursive Gameplan</h2>
 
-  <p>The <b>base case</b> is the condition controlling when the recursion ends. There must be an end, otherwise it would call itself over and over. Often, the base case is an empty list or something similar.</p>
+  <p>The <b>base case</b> is the condition controlling when the recursion ends. There must be an end, otherwise it would
+    call itself over and over. Often, the base case is an empty list or something similar.</p>
 
+  <p>Without a base case, you will hit an error about the maximum call stack size or stack overflow.</p>
+
+  <p>Seems obvious, but another problem you can run into is returning the wrong thing or nothing at all. </p>
+
+  <h2>Helper method recursion</h2>
+
+  <p>Instead of a having a function that is entirely recursive, we might have an inner function that is the recursive
+    bit.</p>
+
+  <p>This is used if we want to store some information that we don't want to be reset. CTD.</p>
+
+  <h2>Pure Recursion</h2>
+
+  <p>These are the functions that are entirely recursive. You can always make a function pure, but it is not always
+    better. Frequently makes use of slice, spread (...) and concat. Remember that strings are immutable so you will need
+    to use methods like slice, substr or substring to make copies of them. To make copies of objects, use Object.assign
+    or the spred operator (...).</p>
 
 
 
@@ -42,4 +69,5 @@
 
 
 </body>
+
 </html>
