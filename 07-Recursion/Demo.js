@@ -28,6 +28,7 @@ wakeUp();
 // first recursive func
 // can obviously be done w/o recursion.
 function countDown(num) {
+  // base case
   if (num <= 0) {
     console.log("All done!");
     return;
