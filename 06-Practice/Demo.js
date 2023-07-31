@@ -47,8 +47,8 @@ function sameFrequency(n1, n2) {
 
 // Examples:
 // areThereDuplicates(1, 2, 3) // false
-// areThereDuplicates(1, 2, 2) // true 
-// areThereDuplicates('a', 'b', 'c', 'a') // true 
+// areThereDuplicates(1, 2, 2) // true
+// areThereDuplicates('a', 'b', 'c', 'a') // true
 
 // Restrictions:
 // Time - O(n)
@@ -173,7 +173,7 @@ function isSubsequence(str1, str2) {
 // Note that a subarray must consist of consecutive elements from the original array.In the first example below, [100, 200, 300] is a subarray of the original array, but[100, 300] is not.
 
 // maxSubarraySum([100, 200, 300, 400], 2) // 700
-// maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4)  // 39 
+// maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4)  // 39
 // maxSubarraySum([-3, 4, 0, -2, 6, -1], 2) // 5
 // maxSubarraySum([3, -2, 7, -4, 1, -1, 4, -2, 1], 2) // 5
 // maxSubarraySum([2, 3], 3) // null
@@ -234,7 +234,7 @@ function minSubArrayLen(nums, sum) {
             end++;
         }
         // if current window adds up to at least the sum given then
-        // we can shrink the window 
+        // we can shrink the window
         else if (total >= sum) {
             minLen = Math.min(minLen, end - start);
             total -= nums[start];
@@ -249,3 +249,38 @@ function minSubArrayLen(nums, sum) {
 }
 
 // Well now we know. I got smoked. This isn't far from what i had, but mentally it was going to take a ton to get me through the next few steps. The comments here help a lot. Review this tomorrow.
+
+
+
+// Sliding Window - findLongestSubstring
+// Write a function called findLongestSubstring, which accepts a string and returns the length of the longest substring with all distinct characters.
+
+// findLongestSubstring('') // 0
+// findLongestSubstring('rithmschool') // 7
+// findLongestSubstring('thisisawesome') // 6
+// findLongestSubstring('thecatinthehat') // 7
+// findLongestSubstring('bbbbbb') // 1
+// findLongestSubstring('longestsubstring') // 8
+// findLongestSubstring('thisishowwedoit') // 6
+
+// Time Complexity - O(n)
+
+function findLongestSubstring(str) {
+    let longest = 0;
+    let seen = {};
+    let start = 0;
+
+    for (let i = 0; i < str.length; i++) {
+      let char = str[i];
+      if (seen[char]) {
+        start = Math.max(start, seen[char]);
+      }
+      // index - beginning of substring + 1 (to include current in count)
+      longest = Math.max(longest, i - start + 1);
+      // store the index of the next char so as to not double count
+      seen[char] = i + 1;
+    }
+    return longest;
+  }
+
+  // Need to review the above three sliding window problems. I think I understand them conceptually, but I would never be able to write a new solution to even a slightly different sliding window problem.

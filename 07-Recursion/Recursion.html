@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursion</title>
+</head>
+<body>
+  <h1>Recursion</h1>
+
+  <h2>Objectives</h2>
+
+  <ul>
+    <li>Define what recursion is and how it can be used.</li>
+    <li>Understand the two essential components of a recursive function</li>
+    <li>Visualize the call stack to better debug and understand recursive functions</li>
+    <li>Use helper method recursion and pure recursion to solve more difficult problems.</li>
+  </ul>
+
+  <h2>What is recursion?</h2>
+
+  <p>Any function that calls itself. Usually done on a smaller and smaller amount of data. Some codebases use it a lot, some not at all. Used under the hood everywhere - JSON.parse / JSON.stringify are <i>usually</i> recursive.</p>
+
+  <h2>Why use recursion?</h2>
+
+  <p>Anything that can be solved recursively, can be solved iteratively, usually with a while loop. But some problems lend themselves more to one technique or the other.</p>
+
+  <h2>The call stack</h2>
+
+  <p>In almost all programming languages, there is a built in data structure that manages what happens when functions are invoked. The <b>call stack</b> is a stack, and when a function is invoked, it is placed on the top of the stack. When JS sees the return keyword or when a function ends, the compiler will remove the item from the top of the stack.</p>
+
+  <p>Recursion takes advantage of this call stack by repeatedly calling the same function over and over with a smaller amount of data. The last item placed onto the stack will be the first to resolve, and then it will pop off, and go to the next one.</p>
+
+  <h2>Recursive Gameplan</h2>
+
+  <p>The <b>base case</b> is the condition controlling when the recursion ends. There must be an end, otherwise it would call itself over and over. Often, the base case is an empty list or something similar.</p>
+
+
+
+
+
+
+
+</body>
+</html>
