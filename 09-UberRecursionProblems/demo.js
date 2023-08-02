@@ -67,3 +67,12 @@ function someRecursive(arr, cb) {
 // First: we could not use the cb on just the first item of the array because map has to be used on an array, so we put it into an array.
 // Second, I really wasn't sure how map would handle the cb. Defining isOdd outside the func let me not have to redefine it inside the func if it didn't already exist.
 // I'm a little proud.
+
+
+// flatten
+// Write a recursive function called flatten which accepts an array of arrays and returns a new array with all values flattened.
+
+// flatten([1, 2, 3, [4, 5] ]) // [1, 2, 3, 4, 5]
+// flatten([1, [2, [3, 4], [[5]]]]) // [1, 2, 3, 4, 5]
+// flatten([[1],[2],[3]]) // [1,2,3]
+// flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]]) // [1,2,3]
