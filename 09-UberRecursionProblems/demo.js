@@ -37,3 +37,33 @@ function isPalindrome(str) {
 }
 
 // sick. I was originally returning false on the first base case before realizing, before running any tests, that it should be true if we get to an empty string.
+
+
+// someRecursive
+// Write a recursive function called someRecursive which accepts an array and a callback. The function returns true if a single value in the array returns true when passed to the callback. Otherwise it returns false.
+
+// SAMPLE INPUT / OUTPUT
+// const isOdd = val => val % 2 !== 0;
+
+// someRecursive([1,2,3,4], isOdd) // true
+// someRecursive([4,6,8,9], isOdd) // true
+// someRecursive([4,6,8], isOdd) // false
+// someRecursive([4,6,8], val => val > 10); // false
+
+const isOdd = val => val % 2 !== 0;
+
+function someRecursive(arr, cb) {
+  if (arr.length === 0) {
+    return false;
+  }
+  let first = [arr[0]].map(cb);
+  if (first[0]) {
+    return true;
+  }
+  return someRecursive(arr.slice(1), cb)
+}
+
+// Lots of cool things I had to think a lot about here.
+// First: we could not use the cb on just the first item of the array because map has to be used on an array, so we put it into an array.
+// Second, I really wasn't sure how map would handle the cb. Defining isOdd outside the func let me not have to redefine it inside the func if it didn't already exist.
+// I'm a little proud.
