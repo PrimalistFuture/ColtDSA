@@ -76,3 +76,42 @@ function someRecursive(arr, cb) {
 // flatten([1, [2, [3, 4], [[5]]]]) // [1, 2, 3, 4, 5]
 // flatten([[1],[2],[3]]) // [1,2,3]
 // flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]]) // [1,2,3]
+
+function flatten(arrOfArr) {
+  let newArr = [];
+
+  for (let i = 0; i < arrOfArr.length; i++) {
+    if (Array.isArray(arrOfArr[i])) {
+      newArr = newArr.concat(flatten(arrOfArr[i]))
+    } else {
+      newArr.push(arrOfArr[i])
+    }
+  }
+  return newArr;
+}
+
+// Had to look this one up, but I was definitely on the right track. The problem I had was that I didn't know how to go 'deeper' once I hit an array. Normally I would just use a loop, but for some reason that didn't seem like something I could do with recursion. Even though it makes sense because if I hit an array, I need to loop through the items of that array.
+
+
+// capitalizeFirst
+// Write a recursive function called capitalizeFirst.Given an array of strings, capitalize the first letter of each string in the array.
+
+// capitalizeFirst(['car','taco','banana']); // ['Car','Taco','Banana']
+
+function capitalizeFirst(arr) {
+  // base case
+  // returns arr of the first (and only) item left in the array with the first char capitalized and the others copied and added to it.
+  if (arr.length === 1) {
+    return [arr[0][0].toUpperCase() + arr[0].substr(1)];
+  }
+  // saves the recursive slicing of the input arr to a variable
+  let cut = capitalizeFirst(arr.slice(0, -1));
+  // saves the slicing of the last item, with the first char capitalized and the remaining chars copied and added to it, to a variable
+  let newStr = arr.slice(arr.length - 1)[0][0].toUpperCase() + arr.slice(arr.length - 1)[0].substr(1);
+  // because the base case created an array, we can push the newStr into it.
+  cut.push(newStr);
+
+  return cut;
+}
+
+// My first instinct was to go backwards, but I was thinking of more of a loop than a slice. Remember this works and gives us the same words in the same order because of the stack.
