@@ -115,3 +115,126 @@ function capitalizeFirst(arr) {
 }
 
 // My first instinct was to go backwards, but I was thinking of more of a loop than a slice. Remember this works and gives us the same words in the same order because of the stack.
+
+
+// nestedEvenSum
+// Write a recursive function called nestedEvenSum. Return the sum of all even numbers in an object which may contain nested objects.
+
+// var obj1 = {
+//   outer: 2,
+//   obj: {
+//     inner: 2,
+//     otherObj: {
+//       superInner: 2,
+//       notANumber: true,
+//       alsoNotANumber: "yup"
+//     }
+//   }
+// }
+
+// var obj2 = {
+//   a: 2,
+//   b: { b: 2, bb: { b: 3, bb: { b: 2 } } },
+//   c: { c: { c: 2 }, cc: 'ball', ccc: 5 },
+//   d: 1,
+//   e: { e: { e: 2 }, ee: 'car' }
+// };
+
+// nestedEvenSum(obj1); // 6
+// nestedEvenSum(obj2); // 10
+
+function nestedEvenSum(obj, sum = 0) {
+  for (let item in obj) {
+    if (obj[item] % 2 === 0) {
+      sum += obj[item]
+    } else if (typeof obj[item] === 'object') {
+      sum += nestedEvenSum(obj[item])
+    }
+  }
+  return sum;
+}
+
+// I was very close on this one. I needed to remember to pass in the sum obj as a default into nestedEvenSum. I knew I couldn't make it in the func without it overwriting itself.
+
+
+// capitalizeWords
+// Write a recursive function called capitalizeWords.Given an array of words, return a new array containing each word capitalized.
+// let words = ['i', 'am', 'learning', 'recursion'];
+// capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
+
+function capitalizeWords(arr) {
+  if (arr.length === 1) {
+    return [arr[0].toUpperCase()];
+  }
+  let remain = capitalizeWords(arr.slice(0, -1))
+  remain.push(arr.slice(arr.length - 1)[0].toUpperCase())
+  return remain
+}
+
+// Yeah I don't really get this one. Very similar to the one two above this, but I am not sure I get that one either.
+
+
+// stringifyNumbers
+// Write a function called stringifyNumbers which takes in an object and finds all of the values which are numbers and converts them to strings.Recursion would be a great way to solve this!
+// let obj = {
+//   num: 1,
+//   test: [],
+//   data: {
+//     val: 4,
+//     info: {
+//       isRight: true,
+//       random: 66
+//     }
+//   }
+// }
+
+function stringifyNumbers(obj) {
+  let newObj = {};
+  for (let key in obj) {
+    if (typeof obj[key] === 'number') {
+      newObj[key] = obj[key].toString();
+    } else if (typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
+      newObj[key] = stringifyNumbers(obj[key]);
+    } else {
+      newObj[key] = obj[key];
+    }
+  }
+  return newObj;
+}
+
+// I was on the right track here too. But I need to get more comfortable making new variables. I am not 100% sure why newObj is not getting overwriten when the func calls stringifyNumbers. Everything else makes sense.
+
+
+
+// collectStrings
+// Write a function called collectStrings which accepts an object and returns an array of all the values in the object that have a typeof string
+// const obj = {
+//   stuff: "foo",
+//   data: {
+//     val: {
+//       thing: {
+//         info: "bar",
+//         moreInfo: {
+//           evenMoreInfo: {
+//             weMadeIt: "baz"
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+function collectStrings(obj) {
+  let onlyStrings = [];
+
+  for (let key in obj) {
+    if (typeof obj[key] === 'string') {
+      onlyStrings.push(obj[key]);
+    } else if (typeof obj[key] === 'object') {
+      onlyStrings = onlyStrings.concat(collectStrings(obj[key]));
+    }
+  }
+  return onlyStrings;
+}
+
+// I knew this one, but made a silly mistake at the end by not concating onlyStrings with everything it was + everything it will be.
