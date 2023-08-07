@@ -46,7 +46,7 @@ function binarySearch(arr, val) {
 // Notes: Lots of small mistakes.
 // Forgot that I had to do arr[middle] in the if checks.
 // better name than middle would be middleIndex or something
-// don't need to reassign middle in the if clause because it goes back to the top of the while loop which does that.
+// don't need to reassign middle in the if clause because it goes back to the top of the while loop which does that, so commented it out for posterity.
 // right has to be arr.length -1 if we are doing left <= right
 // adding to left and subtracting from right is faster than reassigning them to be middle
 // which we have to do if we every want to actually return -1.
