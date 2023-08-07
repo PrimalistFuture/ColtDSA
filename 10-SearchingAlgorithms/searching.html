@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Searching Algorithms</title>
+</head>
+
+<body>
+    <h1>Searching Algorithms</h1>
+
+    <h2>Intro to Linear Search</h2>
+
+    <p>Works by checking every single element in the array and confirming if it is the value we want. O(n). Works just
+        fine at low values of n, but therefore doesn't scale. If your data is not sorted and can't be sorted, this is
+        the best way.</p>
+
+    <p>indexOf, includes, find, findIndex all do linear search.</p>
+
+    <h2>Binary Search</h2>
+
+    <p>Represents a significant improvement over linear search. Rather than eliminating one element at a time, binary
+        search eliminates half of the remaining elements at a time, BUT it only works on sorted arrays. O(log n). Nearly
+        the same as linear at very small n values, but quickly gets wayyyy more efficient.</p>
+
+    <p>Pick a pivot point in the middle, and check to see if the value you are looking for is less than or greater than
+        the middle.</p>
+</body>
+
+</html>
