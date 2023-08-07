@@ -45,7 +45,36 @@ function binarySearch(arr, val) {
 
 // Notes: Lots of small mistakes.
 // Forgot that I had to do arr[middle] in the if checks.
+// better name than middle would be middleIndex or something
 // don't need to reassign middle in the if clause because it goes back to the top of the while loop which does that.
 // right has to be arr.length -1 if we are doing left <= right
-// which we have to do if we are adding to left and subtracking from right
+// adding to left and subtracting from right is faster than reassigning them to be middle
 // which we have to do if we every want to actually return -1.
+
+
+// naive string search
+
+// func takes longer string and substring
+// loop over longer str
+// loop over shorter str
+// if the characters don't match, break out of the inner
+// if they do match keep going
+// if you complete the inner loop and find a match, increment the count of matches
+// return count
+
+function naiveStringSearch(longer, sub) {
+    let counter = 0;
+    for (let i = 0; i < longer.length; i++) {
+        for (let j = 0; j < sub.length; j++) {
+            if (sub[j] !== longer[i + j]) {
+                break;
+            }
+            if (j === sub.length - 1) {
+                counter++;
+            }
+        }
+    }
+    return counter;
+}
+
+// This tricky bit is on line 69. Using longer[i + j] lets us use the length of the sub string without having to make a variable equal to its length or whatever.
