@@ -25,9 +25,35 @@
     <p>There is no one size fits all algorithms, though some are generally better than others and some are more niche.
     </p>
 
+    <h2>Built-In JS .sort()</h2>
+
+    <p>The built in JS .sort() method that can be called on arrays doesn't always work the way that you might expect.
+        This is because it turns the array items into strings, then compares them. So things like numbers won't work
+        like you would expect. But letters should.</p>
+
+    <p>But we can actually specifiy how we want the method to behave. .sort() accepts an optional comparator function.
+        The comparator looks at pairs of elements (a and b), and determines their sort order based on their return value
+        (a - b).</p>
+
+    <p>If (a-b) returns a negative number, a should come before b (ascending order). If (a-b) returns a positive number,
+        a should come after b (descending).</p>
+
+    <p>You can define this comparator function normally or as an anonymous callback.</p>
+
+    <p><b>CTD.</b></p>
+
     <h2>Bubble Sort</h2>
 
-    <p></p>
+    <p>Not the most efficient, and not commonly used. But it is a good intro. <b>BubbleSort</b> is an algorithm where
+        the largest values bubble to the top.</p>
+
+    <p>Compares the next item to the current item. If the next is smaller than the current, than the items swap. If the
+        items are in the correct order, they do not swap.</p>
+
+    <p>After one pass, the largest value will have 'bubbled' to the top. The list then builds from the back.</p>
+
+    <p>BubbleSort, and indeed many other sorting algorithms, involve some type of swapping functionality. That logic can
+        be saved to a function and called when needed. CTD.</p>
 
 
 
