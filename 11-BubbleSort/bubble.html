@@ -55,6 +55,12 @@
     <p>BubbleSort, and indeed many other sorting algorithms, involve some type of swapping functionality. That logic can
         be saved to a function and called when needed. CTD.</p>
 
+    <p>In the scenario in which our data is almost sorted, some implementations of BubbleSort will keep going even if it
+        already done. We can add a shortcurcuit that if no swaps were made, the algorithm finishes. CTD.</p>
+
+    <p>In general BubbleSort is O(n^2). However, with our short curcuit, it is much closer to O(n). So unless you know
+        your data is very nearly sorted, BubbleSorted is not a great idea.</p>
+
 
 
 
