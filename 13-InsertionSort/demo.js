@@ -14,10 +14,7 @@ function swap(arr, idx1, idx2) {
 // Compare the second element with the one before it and swap if necessary
 // If the next element is in the incorrect order, iterate through the sorted portion, place the element in the correct place
 // repeat
-// [10,5,2,1,3]
-// j = 0
-// item = 
-// i = 2
+
 function insertionSort(arr) {
     for (let i = 1; i < arr.length; i++) {
         let item = arr[i];
@@ -32,5 +29,5 @@ function insertionSort(arr) {
     return arr;
 }
 // Notes:
-// I had the line on line 30, but that doesn't work because at that point, j no longer exists. Had to build it into the j loop. Less efficient because we ask that question more than we need to.
+// I had the line on line 30, but that doesn't work because at that point, j no longer exists. Had to build it into the j loop. Less efficient because we ask that question more than we need to. Could have used var in our loop declaration too.
 // because the j loop itself has this short curcuit, we know that if we are in the loop, we can reassign.
