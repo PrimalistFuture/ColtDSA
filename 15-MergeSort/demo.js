@@ -32,3 +32,16 @@ function merge(arr1, arr2) {
     }
     return merged;
 }
+
+// Works great. A little more explicit with how it handles arrays of different sizes than it needs to be. Could rewrite them as ternarys? 
+// Even though the function is big, it is still O(n) time. Not nested for loops or other horrid shit.
+
+function mergeSort(arr) {
+    if (arr.length <= 1) {
+        return arr;
+    }
+    let mid = Math.floor(arr.length / 2);
+    let left = mergeSort(arr.slice(0, mid));
+    let right = mergeSort(arr.slice(mid));
+    return merge(left, right);
+}
