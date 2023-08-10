@@ -48,3 +48,25 @@ function mostDigits(nums) {
     return max;
 }
 // more classic.
+
+// radix conductor
+// figure out max number of digits
+// loop from 0 up to that max
+// for each iteration, create 10 buckets for each digit
+// place the items into the right bucket for the given place
+// increment place and repeat
+function radix(arr) {
+    let max = mostDigits(arr);
+    for (let i = 0; i < max; i++) {
+        // makes an array of 10 subarrays
+        let digitBuckets = Array.from({ length: 10 }, () => []);
+        for (let j = 0; j < arr.length; j++) {
+            let digit = getDigit(arr[j], i);
+            digitBuckets[digit].push(arr[j]);
+        }
+        // need to spread to lose the individual buckets
+        arr = [].concat(...digitBuckets);
+    }
+    return arr;
+}
+// I was really not sure how i was gonna create 10 buckets nicely
