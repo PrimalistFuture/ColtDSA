@@ -28,7 +28,13 @@
     <p>Exploits the fact that arrays of 0 or 1 element are always sorted. Works by decomposing an array into smaller
         arrays of 0 or 1 elements, then building up a newly sorted array. 'Divide and Conquer'.</p>
 
-    <p></p>
+    <p>Time complexity of O(n log n). The first part in which we slice the arrays over and over is the O(log n), and the
+        second part where we merge is O(n). There are no edge cases where it will perform better like there are with
+        Bubble
+        or Insertion.</p>
+
+    <p>As it turns out, O(n log n) is the mathematical best time complexity any sorting algorithm can be without
+        exploiting a strange quirk of numbers (see Radix sort).</p>
 
 
 
