@@ -23,7 +23,11 @@
         median value in the data set you're sorting. But because the data is not sorted (duh), we probably don't know
         the median value.</p>
 
-    <p>For simplicity, we are gonna pick the first element.</p>
+    <p>For simplicity, we are gonna pick the first element. This is fine, but not optimal. Works horribly if the data is
+        already sorted.</p>
+
+    <p>Same time complexity as mergeSort of O(n log n). Splitting the array into sub arrays of 1 and 0 elements can be
+        done in O(log n) time, then comparing the elements one time through is O(n).</p>
 
 
 

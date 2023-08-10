@@ -18,6 +18,7 @@ function swap(arr, idx1, idx2) {
 
 function pivot(arr, startIdx = 0, endIdx = arr.length - 1) {
     let pivot = arr[0];
+    // counter for where to swap the pivot to at end.
     let swapIdx = startIdx;
     for (let i = startIdx + 1; i < arr.length; i++) {
         if (pivot > arr[i]) {
