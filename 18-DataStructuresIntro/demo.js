@@ -23,8 +23,16 @@ class Cat {
         this.toys.push(toy);
         return this.toys;
     }
+    // Class methods are functions that must be called on the class itself. Created with the static keyword.
+    static AddCats(cats) {
+        for (let cat of cats) {
+            console.log(`Enrolling ${cat}`);
+        }
+    }
 }
 
 // creating instance from class using the new keyword
 let pepper = new Cat('Pepper', 'black');
 let purring = new Cat('Purring', 'black');
+
+Cat.addCats([cat1, cat2]);
