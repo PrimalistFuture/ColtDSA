@@ -142,6 +142,40 @@ class SinglyLinkedList {
         this.length++;
         return true;
     }
+    // removes a node from the list given a position, returns the removed node.
+    remove(idx) {
+        if (idx < 0 || idx >= this.length) {
+            return null;
+        }
+        if (idx === o) {
+            return this.shift();
+        }
+        if (idx === this.length) {
+            return this.pop();
+        }
+        let previousNode = this.get(idx - 1);
+        let toBeRemoved = previousNode.next;
+        previousNode.next = toBeRemoved.next;
+        this.length--;
+        return toBeRemoved;
+    }
+    // reverses a SLL for god knows what reason
+    reverse() {
+        // switches head and tail
+        let currentNode = this.head;
+        this.head = this.tail;
+        this.tail = currentNode;
+
+        let previousNode = null;
+        let nextNode;
+        for (let i = 0; i < this.length; i++) {
+            next = currentNode.next;
+            currentNode.next = previousNode;
+            previousNode = currentNode;
+            currentNode = nextNode;
+        }
+        return this;
+    }
 }
 
 let list = new SinglyLinkedList();
