@@ -32,7 +32,7 @@ class DoublyLinkedList {
         this.length++;
         return this;
     }
-    // removes a node from the end of the DLL
+    // removes a node from the end of the DLL, returning that node
     pop() {
         // if the list is empty
         if (!this.head) {
@@ -53,4 +53,69 @@ class DoublyLinkedList {
         this.length--;
         return temp;
     }
+    // remove node from the beginning of the DLL, returning that node
+    shift() {
+        if (!this.head) {
+            return;
+        }
+        let oldHead = this.head;
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            let newHead = this.head.next;
+            oldHead.next = null;
+            newHead.prev = null;
+            this.head = newHead;
+        }
+        this.length--;
+        return oldHead;
+    }
+    // add node to beginning of the DLL, returning the list
+    unshift(val) {
+        let newNode = new Node(val);
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            this.head.prev = newNode;
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        this.length++;
+        return this;
+    }
+    // get and return the node at a given index. If idx OOB, return null
+    get(idx) {
+        if (idx < 0 || idx >= this.length) {
+            return null;
+        }
+        let current;
+        let counter;
+        if ((this.length / 2) >= idx) {
+            // from start
+            current = this.head;
+            counter = 0;
+            while (counter !== idx) {
+                current = current.next;
+                counter++;
+            }
+        } else {
+            // from end
+            current = this.tail;
+            counter = this.length - 1;
+            while (counter !== idx) {
+                current = current.prev;
+                counter--;
+            }
+        }
+        return current;
+    }
 }
+
+let list = new DoublyLinkedList;
+list.push(1);
+list.push(2);
+list.push(3);
+list.push(4);
+list.push(5);
