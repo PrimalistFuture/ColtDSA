@@ -111,9 +111,72 @@ class DoublyLinkedList {
         }
         return current;
     }
-}
+    // replace the value of a node in DLL at a given idx, returning true if valid or false if OOB
+    set(idx, val) {
+        let node = this.get(idx);
+        if (node !== null) {
+            node.val = val;
+            return true;
+        }
+        return false;
+    }
+    // adds a node in the DLL at a given idx, returning true or false if OBB.
+    insert(idx, val) {
+        // OBB checker
+        if (idx < 0 || idx > this.length) {
+            return false;
+        }
+        // insert at beginning
+        if (idx === 0) {
+            return !!this.unshift(val);
+        }
+        // insert at end
+        if (idx === this.length) {
+            return !!this.push(val);
+        }
+        // insert into middle
+        // B
+        let newNode = new Node(val);
+        // A
+        let prevNode = this.get(idx - 1);
+        // A <- B
+        newNode.prev = prevNode;
+        // B -> C
+        newNode.next = prevNode.next;
+        // A -> B
+        prevNode.next = newNode;
+        // C <- B
+        newNode.next.prev = newNode;
+        this.length++;
+        return true;
+    }
+    // Remove a node from DLL, 
+    remove(idx) {
+        if (idx < 0 || idx >= this.length) {
+            return;
+        }
+        if (idx === 0) {
+            return this.shift();
+        }
+        if (idx === this.length - 1) {
+            return this.pop();
+        }
+        let prevNode = this.get(idx - 1);
+        let toBeRemovedNode = prevNode.next;
+        // rewire
+        prevNode.next = toBeRemovedNode.next;
+        toBeRemovedNode.next.prev = prevNode;
+        // sever connect
+        toBeRemovedNode.next = null;
+        toBeRemovedNode.prev = null;
 
-let list = new DoublyLinkedList;
+        this.length--;
+        return this;
+    }
+}
++
+
+    let list = new DoublyLinkedList;
 list.push(1);
 list.push(2);
 list.push(3);
