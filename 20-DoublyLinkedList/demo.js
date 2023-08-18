@@ -173,6 +173,28 @@ class DoublyLinkedList {
         this.length--;
         return this;
     }
+    reverse() {
+        if (this.length < 2) {
+            return this;
+        }
+        let currentNode = this.head;
+        this.head = this.tail;
+        this.tail = currentNode;
+
+        let currentPrev;
+        let currentNext;
+
+        while (currentNode) {
+            currentPrev = currentNode.prev;
+            currentNext = currentNode.next;
+
+            currentNode.next = currentNext;
+            currentNode.prev = currentPrev;
+
+            currentNode = currentNext;
+        }
+        return this;
+    }
 }
 
 
@@ -237,18 +259,18 @@ class DoublyLinkedList {
         return temp;
     }
     unshift(val) {
-    let newNode = new Node(val);
+        let newNode = new Node(val);
 
-    if (!this.head) {
-        this.head = newNode;
-        this.tail = newNode;
-    } else {
-        newNode.next = this.head;
-        this.head.prev = newNode;
-        this.head = newNode;
-    }
-    this.length++;
-    return this;
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head.prev = newNode;
+            this.head = newNode;
+        }
+        this.length++;
+        return this;
     }
     shift() {
         if (!this.head) {
@@ -260,7 +282,7 @@ class DoublyLinkedList {
             this.tail = null;
         } else {
             let newHead = oldHead.next;
-            newHead.prev =  null;
+            newHead.prev = null;
             oldHead.next = null;
             this.head = newHead;
         }
@@ -298,6 +320,26 @@ class DoublyLinkedList {
         }
         return false;
     }
+    insert(idx, val) {
+        if (idx < 0 || idx > this.length) {
+            return false;
+        }
+        if (idx === 0) {
+            return !!this.unshift(val);
+        }
+        if (idx === this.length) {
+            return !!this.push(val);
+        }
+        let newNode = new Node(val);
+        let prevNode = this.get(idx - 1);
+        let nextNode = this.get(idx);
+        prevNode.next = newNode;
+        newNode.prev = prevNode;
+        newNode.next = nextNode;
+        nextNode.prev = newNode;
+        this.length++
+        return true;
+    }
     remove(idx) {
         if (idx < 0 || idx >= this.length) {
             return undefined;
@@ -318,6 +360,53 @@ class DoublyLinkedList {
         toBeRemovedNode.prev = null;
 
         this.length--;
+        return toBeRemovedNode;
+    }
+    // doesnt pass the tests
+    reverse() {
+        if (this.length < 2) {
+            return this;
+        }
+        let currentNode = this.head;
+        this.head = this.tail;
+        this.tail = currentNode;
+
+        let currentPrev = null;
+        let currentNext = null;
+
+        while (currentNode) {
+            currentPrev = currentNode.prev;
+            currentNext = currentNode.next;
+
+            currentNode.next = currentNext;
+            currentNode.prev = currentPrev;
+
+            currentNode = currentNext;
+        }
         return this;
+    }
+    // does pass the tests. IDK man.
+    reverse() {
+        // If list is empty or only has 1 node, just return the list
+        if (this.length < 2) return this
+
+        let currentNode = this.head
+        this.head = this.tail
+        this.tail = currentNode
+
+        let currentPrev = null, currentNext = null
+
+        // Traverse while there is a current node
+        while (currentNode) {
+            currentPrev = currentNode.prev
+            currentNext = currentNode.next
+
+            currentNode.prev = currentNext
+            currentNode.next = currentPrev
+
+            currentNode = currentNext
+        }
+
+        return this
     }
 }
