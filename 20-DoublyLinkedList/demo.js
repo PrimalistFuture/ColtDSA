@@ -150,7 +150,7 @@ class DoublyLinkedList {
         this.length++;
         return true;
     }
-    // Remove a node from DLL, 
+    // Remove a node from DLL,
     remove(idx) {
         if (idx < 0 || idx >= this.length) {
             return;
@@ -174,11 +174,150 @@ class DoublyLinkedList {
         return this;
     }
 }
-+
 
-    let list = new DoublyLinkedList;
+
+let list = new DoublyLinkedList;
 list.push(1);
 list.push(2);
 list.push(3);
 list.push(4);
 list.push(5);
+
+
+// practice for exercises
+class Node {
+    constructor(val) {
+        this.val = val;
+        this.next = null;
+        this.prev = null;
+    }
+}
+
+class DoublyLinkedList {
+    constructor() {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
+    push(val) {
+        let newNode = new Node(val);
+        // if the list is empty
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            this.tail.next = newNode;
+            newNode.prev = this.tail;
+            // unnecessary, does future me remember why?
+            // newNode.next = null;
+            this.tail = newNode;
+        }
+
+        this.length++;
+        return this;
+    }
+    pop() {
+        // if the list is empty
+        if (!this.head) {
+            return;
+        }
+
+        let temp = this.tail;
+        // if removing a node will cause an empty list
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            this.tail = temp.prev;
+            // severs the connection on the node
+            this.tail.next = null;
+            temp.prev = null;
+        }
+        this.length--;
+        return temp;
+    }
+    unshift(val) {
+    let newNode = new Node(val);
+
+    if (!this.head) {
+        this.head = newNode;
+        this.tail = newNode;
+    } else {
+        newNode.next = this.head;
+        this.head.prev = newNode;
+        this.head = newNode;
+    }
+    this.length++;
+    return this;
+    }
+    shift() {
+        if (!this.head) {
+            return;
+        }
+        let oldHead = this.head;
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            let newHead = oldHead.next;
+            newHead.prev =  null;
+            oldHead.next = null;
+            this.head = newHead;
+        }
+        this.length--;
+        return oldHead;
+    }
+    get(idx) {
+        if (idx < 0 || idx >= this.length) {
+            return null;
+        }
+        let current;
+        let counter;
+        if (this.length / 2 >= idx) {
+            current = this.head;
+            counter = 0;
+            while (counter !== idx) {
+                current = current.next;
+                counter++;
+            }
+        } else {
+            current = this.tail;
+            counter = this.length - 1;
+            while (counter !== idx) {
+                current = current.prev;
+                counter--;
+            }
+        }
+        return current;
+    }
+    set(idx, val) {
+        let node = this.get(idx);
+        if (node !== null) {
+            node.val = val;
+            return true;
+        }
+        return false;
+    }
+    remove(idx) {
+        if (idx < 0 || idx >= this.length) {
+            return undefined;
+        }
+        if (idx === 0) {
+            return this.shift();
+        }
+        if (idx === this.length - 1) {
+            return this.pop();
+        }
+        let prevNode = this.get(idx - 1);
+        let toBeRemovedNode = prevNode.next;
+        // rewire
+        prevNode.next = toBeRemovedNode.next;
+        toBeRemovedNode.next.prev = prevNode;
+        // sever connect
+        toBeRemovedNode.next = null;
+        toBeRemovedNode.prev = null;
+
+        this.length--;
+        return this;
+    }
+}
