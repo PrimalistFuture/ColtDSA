@@ -18,15 +18,40 @@
     <p>The call stack is a stack, shockingly. Also think about the stack used in Magic or Legends of Runeterra. Undo /
         Redo. The back button in your browser.</p>
 
-    <h2>Stack Implementation</h2>
-    <p>There is more than one way to create a stack, because a stack really has only one rule: First In Last Out.</p>
+    <h3>Stack Implementation</h2>
+        <p>There is more than one way to create a stack, because a stack really has only one rule: First In Last Out.
+        </p>
 
-    <p>Some programming languages come with their own stack data type. JavaScript does not. </p>
+        <p>Some programming languages come with their own stack data type. JavaScript does not. </p>
 
-    <p>The easiest way to implement a stack is with an array. CTD. Works pretty darn well with push and pop. While you
-        can also technically do it with unshift and shift, adding items to the beginning of an array is costly.</p>
+        <p>The easiest way to implement a stack is with an array. CTD. Works pretty darn well with push and pop. While
+            you
+            can also technically do it with unshift and shift, adding items to the beginning of an array is costly.</p>
 
-    <p>But push and pop are O(1) so ezpz.</p>
+        <p>But push and pop are O(1) so ezpz. But we also get a ton of extra methods that we don't really need. So
+            building
+            a Singly Linked List-like class structure might be better as all the methods will be ones that we
+            specifically built on it.</p>
+        <p>With a SLL stack, insertion and removal are both O(1). Whereas Searching and Access are both O(n).</p>
+
+        <h2>Queue Intro</h2>
+
+        <p>Queues are very similar to a stack in that you really only have two options, add and remove. But now a queue
+            is a FIFO data structure: first in first out.</p>
+
+        <p>Uploading or downloading multiple files, server queues, printing queues, </p>
+
+        <h3>Queue Implementation</h3>
+
+        <p>Can be done with an array and as a class. There are advantages to both.</p>
+
+        <p>CTD.</p>
+
+        <p>Insertion and Removal with a queue class will be O(1), while searching and access are O(n). Whereas using an
+            array as your queue will have one of insertion or removal be O(n), depending on the implementation.</p>
+
+
+
 </body>
 
 </html>
