@@ -99,13 +99,51 @@ class BinarySearchTree {
     // returns array of nodes in the tree
     DFS_preOrder() {
         let visited = [];
-        // helper func that takes in a node, and recursively looks through the left-most children, then the right-most children
+        // helper func that takes in a node, pushes it into an array, and recursively looks through its left-most children, then its right-most children
         function traverse(node) {
             // could be node.val if that is all we care about
             visited.push(node);
             if (node.left) {
                 traverse(node.left);
             }
+            if (node.right) {
+                traverse(node.right);
+            }
+        }
+        // invoke the helper on the root node
+        traverse(this.root);
+        return visited;
+    }
+    // Depth-First Search PostOrder
+    // returns array of nodes in the tree
+    DFS_postOrder() {
+        let visited = [];
+        // helper func that takes in a node, recursively looks through its left-most children, then its right-most children, before pushing the node into an array
+        function traverse(node) {
+            if (node.left) {
+                traverse(node.left);
+            }
+            if (node.right) {
+                traverse(node.right);
+            }
+            // could be node.val if that is all we care about
+            visited.push(node);
+        }
+        // invoke the helper on the root node
+        traverse(this.root);
+        return visited;
+    }
+    // Depth-First Search in Order
+    // returns array of nodes in the tree
+    DFS_inOrder() {
+        let visited = [];
+        // helper func that takes in a node, recursively looks through its left-most children, pushes that node into an array, then traverses  its right-most children, 
+        function traverse(node) {
+            if (node.left) {
+                traverse(node.left);
+            }
+            // could be node.val if that is all we care about
+            visited.push(node);
             if (node.right) {
                 traverse(node.right);
             }
@@ -129,3 +167,9 @@ tree.BFS();
 
 tree.DFS_preOrder();
 // [10,6,3,8,15,20]
+
+tree.DFS_postOrder();
+// [3,8,6,20,15,10]
+
+tree.DFS_inOrder();
+// [3,6,8,10,15,20]

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heaps</title>
+</head>
+
+<body>
+    <h1>Intro to Heaps</h1>
+
+    <p>Heaps are another category of trees. But they have some special rules. We will mostly be focusing on Binary
+        Heaps, of which there are two variations.</p>
+
+    <p>In a <b>MaxBinaryHeap</b> parent nodes are always larger than child nodes. In a <b>MinBinaryHeap</b>, parent
+        nodes are always smaller than child nodes.</p>
+
+    <p>Binary Heaps are used to implement <b>Priority Queues</b>, which are very commonly used data structures. Heaps
+        are also used quite a bit with graph traversal algorithms.</p>
+
+    <h2>Max Binary Heap</h2>
+
+    <p>In a Max, the root node will always be the largest node. But there is no realationship between the left side of
+        the heap and right side of the heap like there is in a Binary Search Tree.</p>
+
+    <p>Each parent has at most two child nodes. The value of each parent node is always greater than its child nodes.
+        The parent is greater than the children, but there is nod guarantees between sibling nodes. A binary heap is as
+        compact as possible. <b>All the children of each node are as full as they can be and left children are filled
+            out first.</b></p>
+
+    <h2>Storing Heaps</h2>
+
+    <p>The easiest way of storing a binary heap is an array. But in an array it would be hard to know what a given nodes
+        child nodes are... unless you know that there is a math formula to figure out it</p>
+
+    <p>For a given index in the array, n, the <b>left child is stored at 2n + 1, and the right child is stored at 2n +
+            2.</b> So if a node is at index 2, its children would be at index 5 and 6.</p>
+
+    <p>Similarly, if you have a child node and want to know its parent, you can (n-1) / 2 and round down if necessary.
+    </p>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
