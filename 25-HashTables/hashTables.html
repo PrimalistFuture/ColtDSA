@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Tables</title>
+</head>
+
+<body>
+    <h1>Hash Tables</h1>
+
+    <p>Sometimes called Hash Maps. Like lists, just about every language has a hash table implementation built into it.
+        We will make our own, but really there is no reason to reinvent the wheel. </p>
+
+    <h2>What is a Hash Table</h2>
+
+    <p>Hash tables store key-value pairs. The keys of the hash table are not ordered. They are extremely quick for
+        finding values, adding new values and removing values. Hash tables are built ontop of arrays, allowing for that
+        fast lookup array[1], but without an order.</p>
+
+    <p>Even though every language has a hash table, it is still good to know how they are implemented.</p>
+
+    <p>The keys of a hash table don't have to be strings, but many implementations require them to be strings.</p>
+
+    <h2>Hashing</h2>
+
+    <p>In order to look up values by a given key, we need a way to convert that key into a valid array index. The
+        functions that help us do that conversion are called hash functions. They are all over the place and you don't
+        really ever need to write your own.</p>
+
+    <p>The idea of a hash function is that if we pass it a string, the function will output the same number everytime.
+    </p>
+
+    <p>So if we pass it 'pink', it will give us back 0. And 'red' will give us 8 or whatever. The keys and values are
+        then stored in that array index.</p>
+
+    <p>Hash functions are often one-way: the output it gives you can not be reversed to figure out what the initial key
+        was.</p>
+
+    <p>Hash functions need to be fast O(1), distributes things uniformally and don't collide, and stable so the same
+        input gives the same output everytime.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

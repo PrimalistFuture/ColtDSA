@@ -25,7 +25,8 @@
         the heap and right side of the heap like there is in a Binary Search Tree.</p>
 
     <p>Each parent has at most two child nodes. The value of each parent node is always greater than its child nodes.
-        The parent is greater than the children, but there is nod guarantees between sibling nodes. A binary heap is as
+        The parent is greater than the children, but there is no guarantees between sibling nodes. THAT IS - the
+        children of a given parent are never compared to each other. A binary heap is as
         compact as possible. <b>All the children of each node are as full as they can be and left children are filled
             out first.</b></p>
 
@@ -48,6 +49,14 @@
     <p>Priority queues can be implemented with a variety of data structures. It can be a simple list of objects. But I
         heap is a very good implementation.</p>
 
+    <h2>Big O</h2>
+
+    <p>Insertion and Deletion of a binary heap is O(log n). Because each time we go down a generation, we have 2x the
+        number of nodes. But we are only comparing a node to its parent. For 16 elements in the binary heap, we would
+        only have to make 4 comparisons.</p>
+
+    <p>Binary Heaps are not really made to be searchable effeciently, searching has an O(n) time. A given node could
+        really be just about anywhere.</p>
 
 
 

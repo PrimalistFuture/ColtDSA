@@ -154,6 +154,8 @@ class PriorityQueue {
             if (rightChildIdx < length) {
                 rightChild = this.values[rightChildIdx];
                 // yuck
+                // havent swapped and right is less than elem
+                // OR have swapped and right is less than left
                 if (
                     (swap === null && rightChild.prio < element.prio) ||
                     (swap !== null && rightChild.prio < leftChild.prio)
