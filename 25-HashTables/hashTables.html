@@ -41,6 +41,17 @@
     <p>Hash functions need to be fast O(1), distributes things uniformally and don't collide, and stable so the same
         input gives the same output everytime.</p>
 
+    <p>For some reason, having a your length of the array the hash table is mapped over be a prime number dramatically
+        reduces the number of collisions.</p>
+
+    <p>Even with a large array and a great hash function, collisions - where many items map to the same index - are
+        inevitable. The two main ways of dealing with collisions are <b>seperate chaining and linear probing</b>.</p>
+
+    <p>With <b>Seperate Chaining</b>, at each index in our array we store values using a more complicated data
+        structure, like an array or a linked list. So a bucket would lead to a smaller array</p>
+
+    <p>With <b>Linear Probing</b>, when we find a collision, we search through the array to find the next empty bucket.
+        Allows up store our data in a not nested structure.</p>
 
 
 
