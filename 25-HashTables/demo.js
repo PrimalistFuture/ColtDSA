@@ -44,7 +44,7 @@ class HashTable {
         }
         return total
     }
-    // assigns a key and value to a place on this.keyMap
+    // assigns a key and value to a place on this.keyMap. Allows the insertion of duplicate keys, which is generally no bueno
     set(key, value) {
         let idx = this._hash(key);
         // if there is nothing currently stored at that idx, set the value to be an empty array
@@ -65,6 +65,35 @@ class HashTable {
             }
         }
         return undefined;
+    }
+    // retuns an array of all of the unique keys in the hash table
+    keys() {
+        let keys = [];
+        for (let i = 0; i < this.keyMap.length; i++) {
+            if (this.keyMap[i]) {
+                for (let j = 0; j < this.keyMap[i].length; j++) {
+                    if (!keys.includes(this.keyMap[i][j][0])) {
+                        keys.push(this.keyMap[i][j][0]);
+                    }
+                }
+            }
+        }
+        return keys;
+    }
+
+    // returns an array of all of the unique values in the hash table
+    values() {
+        let values = [];
+        for (let i = 0; i < this.keyMap.length; i++) {
+            if (this.keyMap[i]) {
+                for (let j = 0; j < this.keyMap[i].length; j++) {
+                    if (!values.includes(this.keyMap[i][j][1])) {
+                        values.push(this.keyMap[i][j][1]);
+                    }
+                }
+            }
+        }
+        return values;
     }
 }
 
