@@ -38,7 +38,30 @@
         ways. Friends on Facebook are undirected: they can see your shit, and you can see theirs.</p>
 
     <p><b>Directed</b> Graphs, by contrast, only go one specified direction. A -> B, but B can't go back to A.
-        Apparently instagram followers are directed.</p>
+        Apparently instagram followers are directed.
+    </p>
+
+    <h2>Storing Graphs</h2>
+
+    <p>To represent graphs in code, we need to store the edges and the node. Because of the variability of the number of
+        these, it is harder than something like a LinkedList.
+    </p>
+
+    <p>
+        One such way is an <b>Adjacency Matrix</b>, which are usually arrays of arrays. Think like a gameboard, or a
+        math matrix. Stores if there is an edge between any two nodes.
+    </p>
+
+    <p>The other main way is an <b>Adjacency List</b>. Similar, but now is each node has an array of its connected
+        nodes. Usually an Array of objects where each node is a key, and its connections is an array.
+    </p>
+
+    <h2>Big O</h2>
+
+    <p>Each option has its merits. Adjacency List is better for adding vertexs and edges, takes up less space, faster to
+        iterate over, but slower to lookup a specific edge. Adjacency Matrix is better for lookup, but takes up more
+        space especially in sparce graphs, and is slower to iterate over.
+    </p>
 
 
 
