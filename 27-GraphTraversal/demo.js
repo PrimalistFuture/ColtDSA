@@ -44,6 +44,7 @@ class Graph {
     DFRecursive(vertex) {
         let visited = {};
         let result = [];
+        // need to do this because otherwise we lose this context in the helper
         let adjacencyList = this.adjacencyList;
 
         // IFFY recursion helper
@@ -54,20 +55,66 @@ class Graph {
             }
             visited[node] = true;
             result.push(node);
-            // Below outputs [A,B,D,E,C] No F, when line 60 has a return on the invocation. Has to do with how js handles for of differently from for each.
+            // Below outputs [A,B,D,E,C] No F, when line 60 has a return on the invocation. Has to do with how js handles for of differently from forEach, but I don't understand the specifics.
             for (let neighbor of adjacencyList[node]) {
-                console.log(node, adjacencyList[node], visited)
                 if (!visited[neighbor]) {
                     // not return DFS(neighbor)
                     DFS(neighbor);
                 }
             }
+            // forEach for posterity
             // adjacencyList[node].forEach(neighbor => {
             //     if (!visited[neighbor]) {
             //         return DFS(neighbor);
             //     }
             // })
         })(vertex);
+        return result;
+    }
+    // same as above, but iteratively. Given a vertex, returns an array of  DepthFirst order which is slightly different than the DFRecursive order
+    DFIterative(vertex) {
+        let stack = [];
+        let visited = {};
+        let result = [];
+        let node;
+
+        stack.push(vertex);
+        visited[vertex] = true;
+
+        while (stack.length !== 0) {
+            node = stack.pop();
+            result.push(node);
+
+            for (let neighbor of this.adjacencyList[node]) {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    stack.push(neighbor);
+                }
+            }
+        }
+        return result;
+    }
+    // Given a vertex, returns an array of Breadth First Search order.
+    BFS(vertex) {
+        let queue = [];
+        let visited = {};
+        let result = [];
+        let node;
+
+        queue.push(vertex);
+        visited[vertex] = true;
+
+        while (queue.length !== 0) {
+            node = queue.shift();
+            result.push(node);
+
+            for (let neighbor of this.adjacencyList[node]) {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.push(neighbor);
+                }
+            }
+        }
         return result;
     }
 }
