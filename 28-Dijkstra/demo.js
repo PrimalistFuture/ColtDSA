@@ -1,5 +1,22 @@
 "use strict";
 
+// ez prio queue
+class PriorityQueue {
+    constructor() {
+        this.values = [];
+    }
+    enqueue(val, prio) {
+        this.values.push({ val, prio });
+        this.sort();
+    }
+    dequeue() {
+        return this.values.shift();
+    }
+    sort() {
+        this.values.sort((a, b) => a.prio - b.prio);
+    }
+}
+
 class WeightedGraph {
     constructor() {
         this.adjacencyList = {};
@@ -26,8 +43,54 @@ class WeightedGraph {
     // 2. Once there, we look at each of its neighbors
     // 3. For each neighbor, we calc the distance by summing the total edges that lead to the node we're checking from the starting node.
     // 4. If the new total distance to a node is less than the previous total, we store the new shorted distance for that node.
-    Dijstras(start, end) {
+    Dijstra(start, end) {
+        let pq = new PriorityQueue();
+        let distance = {};
+        let previous = {};
+        let path = [];
+        let smallest;
+        // builds initial distance state
+        for (let vertex in this.adjacencyList) {
+            if (vertex === start) {
+                distance[vertex] = 0;
+                pq.enqueue(vertex, 0);
+            } else {
+                distance[vertex] = Infinity;
+                pq.enqueue(vertex, Infinity);
+            }
+            // builds initial state
+            previous[vertex] = null;
+        }
 
+        while (pq.values.length) {
+            smallest = pq.dequeue().val;
+            if (smallest === end) {
+                // we are done
+                while (previous[smallest]) {
+                    path.push(smallest);
+                    smallest = previous[smallest];
+                }
+                break;
+            }
+            if (smallest || distance[smallest] !== Infinity) {
+                for (let neighbor in this.adjacencyList[smallest]) {
+                    // finds neighboring nodes
+                    let nextNode = this.adjacencyList[smallest][neighbor];
+                    // calculates new distance based on what we have already to neighboring node
+                    let candidate = distance[smallest] + nextNode.weight;
+                    let nextNeighbor = nextNode.node;
+                    if (candidate < distance[nextNeighbor]) {
+                        // updates new smallest distance to neighbor
+                        distance[nextNeighbor] = candidate;
+                        // updates previous with how we got to neighbor
+                        previous[nextNeighbor] = smallest;
+                        // enqueues in prio queue with new priority
+                        pq.enqueue(nextNeighbor, candidate);
+                    }
+                }
+            }
+        }
+        return path.concat(smallest).reverse();
     }
 }
 
@@ -40,13 +103,15 @@ g.addVertex('D');
 g.addVertex('E');
 g.addVertex('F');
 
-g.addEdge('A', 'B', 9);
-g.addEdge('A', 'C', 3);
+g.addEdge('A', 'B', 4);
+g.addEdge('A', 'C', 2);
 g.addEdge('B', 'D', 3);
 g.addEdge('C', 'E', 2);
-g.addEdge('D', 'E', 4);
-g.addEdge('D', 'F', 7);
-g.addEdge('E', 'F', 4);
+g.addEdge('D', 'E', 3);
+g.addEdge('D', 'F', 1);
+g.addEdge('E', 'F', 1);
+
+g.Dijstra('A', 'E');
 
 //          A
 //        /   \
@@ -55,27 +120,6 @@ g.addEdge('E', 'F', 4);
 //       D --- E
 //        \   /
 //          F
-
-
-// ez prio queue
-class PriorityQueue {
-    constructor() {
-        this.values = [];
-    }
-    enqueue(val, prio) {
-        this.values.push({ val, prio });
-        this.sort();
-    }
-    dequeue() {
-        return this.values.shift();
-    }
-    sort() {
-        this.values.sort((a, b) => a.prio - b.prio);
-    }
-}
-
-
-
 
 // // max binary heap
 // class MaxBinaryHeap {
