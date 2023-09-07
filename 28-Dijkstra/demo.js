@@ -1,21 +1,5 @@
 "use strict";
 
-// ez prio queue
-class PriorityQueue {
-    constructor() {
-        this.values = [];
-    }
-    enqueue(val, prio) {
-        this.values.push({ val, prio });
-        this.sort();
-    }
-    dequeue() {
-        return this.values.shift();
-    }
-    sort() {
-        this.values.sort((a, b) => a.prio - b.prio);
-    }
-}
 
 class WeightedGraph {
     constructor() {
@@ -38,6 +22,7 @@ class WeightedGraph {
         }
         return this.adjacencyList;
     }
+
     // pseudo
     // 1. when we look to visit a new node, we pick the node with the smallest known distance to visit first.
     // 2. Once there, we look at each of its neighbors
@@ -93,6 +78,92 @@ class WeightedGraph {
         return path.concat(smallest).reverse();
     }
 }
+
+// PRIORITY QUEUE
+class Node {
+    constructor(val, prio) {
+        this.val = val;
+        this.prio = prio;
+        // insertion time not currently used, but could be part of the comparisons if we wanted.
+        // this.insertTime = Date.now();
+    }
+}
+// implemented as a min binary heap where lower prios are first
+class PriorityQueue {
+    constructor() {
+        this.values = [];
+    }
+    enqueue(val, prio) {
+        let newNode = new Node(val, prio);
+        this.values.push(newNode);
+        this.bubbleUp();
+    }
+    // helper to bubble the val into the right spot of the mbh. Rewrote to better match what I did in sinkDown()
+    bubbleUp() {
+        // idx of newly inserted item that needs to be organized
+        let idx = this.values.length - 1;
+        let element = this.values[idx];
+        while (idx > 0) {
+            // its parent
+            let parentIdx = Math.floor((idx - 1) / 2);
+            let parent = this.values[parentIdx];
+            if (element.prio >= parent.prio) {
+                break;
+            }
+            this.values[parentIdx] = element;
+            this.values[idx] = parent;
+            idx = parentIdx;
+        }
+    }
+    dequeue() {
+        let min = this.values[0];
+        let end = this.values.pop();
+        if (this.values.length > 0) {
+            this.values[0] = end;
+            this.sinkDown();
+        }
+        return min;
+    }
+    sinkDown() {
+        let idx = 0;
+        const length = this.values.length;
+        let element = this.values[0];
+        while (true) {
+            let leftChildIdx = 2 * idx + 1;
+            let rightChildIdx = 2 * idx + 2;
+            let leftChild;
+            let rightChild;
+            let swap = null;
+
+            if (leftChildIdx < length) {
+                leftChild = this.values[leftChildIdx];
+                if (leftChild.prio < element.prio) {
+                    swap = leftChildIdx;
+                }
+            }
+            if (rightChildIdx < length) {
+                rightChild = this.values[rightChildIdx];
+                // yuck
+                // havent swapped and right is less than elem
+                // OR have swapped and right is less than left
+                if (
+                    (swap === null && rightChild.prio < element.prio) ||
+                    (swap !== null && rightChild.prio < leftChild.prio)
+                ) {
+                    swap = rightChildIdx;
+                }
+            }
+
+            if (swap === null) {
+                break;
+            }
+            this.values[idx] = this.values[swap];
+            this.values[swap] = element;
+            idx = swap;
+        }
+    }
+}
+
 
 let g = new WeightedGraph();
 

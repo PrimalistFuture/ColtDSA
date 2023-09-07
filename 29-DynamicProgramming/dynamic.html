@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Programming</title>
+</head>
+
+<body>
+    <h1>Dynamic Programming</h1>
+
+    <p>Dynamic Programming is a method for solving a complex problem by breaking it down into a collection of simpler
+        subproblems, solving each of those subproblems just once, and storing their solutions.</p>
+
+    <p>Dynamic Programming isn't for every problem, but when it works, it can really speed things up.</p>
+
+    <p>The name itself is a little misleading and infact wasn't defined with computers in mind. It isn't trying to work
+        on a million inputs - it just sounds that way.</p>
+
+    <p>Dynamic Programming really only works on problems with <b>optimal substructure and overlapping subproblems.</b>
+    </p>
+
+    <h2>Overlapping Subproblems</h2>
+
+    <p>A problem is said to have overlapping subproblems if <b>it can be broken down into subproblems which are reused
+            several times.</b></p>
+
+    <p>So there needs to be a repetition and they need to overlap. Something like mergesort, which breaks down problems
+        and then rebuilds them would NOT be overlapping enough to work with dynamic programming.</p>
+
+    <h2>Optimal substructure</h2>
+
+    <p>A problem is said to have optimal substructure if <b>an optimal solution can be constructed from optimal
+            solutions of its subproblems.</b></p>
+
+    <p>Things like shortest path are NOT optimal substruture because the cheapest flight to SEA might not be included in
+        the cheapest flight to Fairbanks.</p>
+
+    <h2>Memoization</h2>
+
+    <p>A key part of Dynamic programming is using past knowledge to make solving a future problem easier.</p>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
