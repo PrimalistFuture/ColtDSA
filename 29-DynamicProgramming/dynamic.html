@@ -32,16 +32,30 @@
     <h2>Optimal substructure</h2>
 
     <p>A problem is said to have optimal substructure if <b>an optimal solution can be constructed from optimal
-            solutions of its subproblems.</b></p>
+            solutions of its subproblems.</b>
+    </p>
 
     <p>Things like shortest path are NOT optimal substruture because the cheapest flight to SEA might not be included in
-        the cheapest flight to Fairbanks.</p>
+        the cheapest flight to Fairbanks.
+    </p>
 
     <h2>Memoization</h2>
 
     <p>A key part of Dynamic programming is using past knowledge to make solving a future problem easier.</p>
 
+    <p><b>Memoization</b> is storing the results of expensive function calls and returning the cached result when the
+        same inputs occur again.
+    </p>
 
+    <p>Check out the demo. Makes a huge difference. Gets down to O(n) time.</p>
+
+    <h2>Tabulation</h2>
+
+    <p><b>Tabulation</b> is storing the result of a previous result in a 'table', usually an array. Usually done with
+        iteration and has better space complexity than memoization. This is the 'bottom up' type approach.</p>
+
+    <p>Because Tabulation is iterative, it won't run into a stack overflow error like a recursive, memoized function
+        might.</p>
 
 
 
