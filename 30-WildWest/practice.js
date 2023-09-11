@@ -225,15 +225,21 @@ function findRotatedIndex(arr, val){
     // finds the lowest val in the array
     let start = Math.min(...arr);
     // finds the index of that val
-    let startIdx = arr[start];
+    let startIdx = arr.indexOf(start);
+    // console.log('start and startIdx:', start, startIdx);
     // splits the arrays into two, already sorted parts
     let leftArr = arr.slice(0, startIdx)
     let rightArr = arr.slice(startIdx)
-    console.log('two split arrays:',leftArr, rightArr);
+    // console.log('two split arrays:',leftArr, rightArr);
     // calls binarysearch on each part
     let checkLeft = binarySearch(leftArr, val);
     let checkRight = binarySearch(rightArr, val);
-    console.log('result of binarysearch on two split arrays:', checkLeft, checkRight);
-
-    return Math.max(checkLeft, checkRight);
+    // console.log('result of binarysearch on two split arrays:', checkLeft, checkRight);
+    if (checkLeft === -1 && checkRight === -1) {
+        return -1;
+    } else  if (checkLeft > checkRight) {
+        return checkLeft;
+    } else if (checkRight > checkLeft) {
+        return leftArr.length + checkRight;
+    }
 }
