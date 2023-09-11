@@ -111,7 +111,7 @@ class SinglyLinkedList {
         }
         return current;
     }
-    // changes the value of a node given its position, returns true or false if could not complete
+    // changes the value of a node given its position, returns true; or false if could not complete
     set(idx, val) {
         let toBeReplaced = this.get(idx);
         if (!toBeReplaced) {
