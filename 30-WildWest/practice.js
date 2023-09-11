@@ -219,4 +219,21 @@ function binarySearch(arr, val) {
     }
     return -1;
 }
+// im trying lol
+function findRotatedIndex(arr, val){
+    // add whatever parameters you deem necessary - good luck!
+    // finds the lowest val in the array
+    let start = Math.min(...arr);
+    // finds the index of that val
+    let startIdx = arr[start];
+    // splits the arrays into two, already sorted parts
+    let leftArr = arr.slice(0, startIdx)
+    let rightArr = arr.slice(startIdx)
+    console.log('two split arrays:',leftArr, rightArr);
+    // calls binarysearch on each part
+    let checkLeft = binarySearch(leftArr, val);
+    let checkRight = binarySearch(rightArr, val);
+    console.log('result of binarysearch on two split arrays:', checkLeft, checkRight);
 
+    return Math.max(checkLeft, checkRight);
+}
