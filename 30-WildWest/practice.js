@@ -89,6 +89,22 @@ class SinglyLinkedList {
         }
         return currentNode;
     }
+    remove(idx) {
+        if (idx < 0 || idx >= this.length) {
+            return null;
+        }
+        if (idx === 0) {
+            return this.shift();
+        }
+        if (idx === this.length) {
+            return this.pop();
+        }
+        let previousNode = this.get(idx - 1);
+        let toBeRemoved = previousNode.next;
+        previousNode.next = toBeRemoved.next;
+        this.length--;
+        return toBeRemoved;
+    }
     insert(idx, val) {
         if (idx < 0 || idx > this.length) {
             return false;
@@ -242,4 +258,25 @@ function findRotatedIndex(arr, val){
     } else if (checkRight > checkLeft) {
         return leftArr.length + checkRight;
     }
+}
+
+function selectionSort(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        let minIdx = i;
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] < arr[minIdx]) {
+                minIdx = j;
+            }
+        }
+        if (minIdx !== i) {
+            swap(arr, minIdx, i)
+        }
+    }
+    return arr;
+}
+
+function swap(arr, idx1, idx2) {
+    let temp = arr[idx1];
+    arr[idx1] = arr[idx2];
+    arr[idx2] = temp;
 }

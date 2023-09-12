@@ -147,7 +147,7 @@ class SinglyLinkedList {
         if (idx < 0 || idx >= this.length) {
             return null;
         }
-        if (idx === o) {
+        if (idx === 0) {
             return this.shift();
         }
         if (idx === this.length) {
